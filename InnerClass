@@ -1,0 +1,35 @@
+class CPU{
+	int price;
+	
+	class Processor{
+		int no_of_cores;
+		String manufacturer;
+		}
+		static class RAM{
+			String memory;
+			String Ram_manufacturer;
+			}
+		}
+			
+			public class Process{
+				public static void main(String args[]){
+				
+					CPU myObj1 = new CPU();
+					CPU.Processor myObj2 = myObj1.new Processor();
+					CPU.RAM myObj3 = new CPU.RAM();
+					
+					myObj1.price = 20000;
+					myObj2.no_of_cores = 5;
+					myObj2.manufacturer = "Intel";	
+					myObj3.memory = "64GB";
+					myObj3.Ram_manufacturer = "Intel";
+					
+					System.out.println("Price :"+myObj1.price);
+					System.out.println("No of cores :"+myObj2.no_of_cores);
+					System.out.println("Manufacturer :"+myObj2.manufacturer);
+					System.out.println("Memory :"+myObj3.memory);
+					System.out.println("RAM manufacturer :"+myObj3.Ram_manufacturer);
+				}
+			}
+		
+
