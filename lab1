@@ -1,0 +1,141 @@
+Q1: Create a department table with the following columns: dept_id (PK), dept_name(not null), dept_location.
+CREATE TABLE department59(dept_id number(10) primary key,dept_name varchar(15),dept_location varchar(50));
+Table created.
+
+SQL> desc department59;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPT_ID				   NOT NULL NUMBER(10)
+ DEPT_NAME				   NOT NULL VARCHAR2(15)
+ DEPT_LOCATION					    VARCHAR2(50)
+
+
+Q2: Write a SQL query to create an employee table with the following columns: emp_id(PK), emp_name, emp_salary (>20k), emp_join_date (between June 1998- till date), dept_id (FK).
+
+CREATE TABLE emp59(emp_id varchar(10) primary key,emp_name varchar(15),emp_salary numeric(10,2) CHECK(emp_salary>20000),emp_join_date DATE CHECK(emp_join_date >= DATE '1998-06-01'),dept_id numeric(10), foreign key(dept_id) references department59(dept_id));
+
+Table created.
+
+SQL> DESC emp59
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID 				   NOT NULL VARCHAR2(10)
+ EMP_NAME					    VARCHAR2(15)
+ EMP_SALARY					    NUMBER(10,2)
+ EMP_JOIN_DATE					    DATE
+ DEPT_ID					    NUMBER(10)
+
+Q3: Create table support table with s_id (PK), emp_id (FK), dept_id (FK), status(Yes/No).
+
+Create table support59(s_id int primary key,emp_id varchar(10),dept_id int,status varchar(5) check(status in('Yes','No')),foreign key(emp_id) references emp59(emp_id),foreign key(dept_id) references department59(dept_id));
+
+Table created.
+
+SQL> DESC support59;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ S_ID					   NOT NULL NUMBER(38)
+ EMP_ID 					    VARCHAR2(10)
+ DEPT_ID					    NUMBER(38)
+ STATUS 					    VARCHAR2(5)
+
+
+Q4: Display the schema of the above three tables.
+
+SQL> DESC support59;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ S_ID					   NOT NULL NUMBER(38)
+ EMP_ID 					    VARCHAR2(10)
+ DEPT_ID					    NUMBER(38)
+ STATUS 					    VARCHAR2(5)
+
+SQL> desc department59;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPT_ID				   NOT NULL NUMBER(10)
+ DEPT_NAME				   NOT NULL VARCHAR2(15)
+ DEPT_LOCATION					    VARCHAR2(50)
+
+SQL> desc emp59;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID 				   NOT NULL VARCHAR2(10)
+ EMP_NAME					    VARCHAR2(15)
+ EMP_SALARY					    NUMBER(10,2)
+ EMP_JOIN_DATE					    DATE
+ DEPT_ID					    NUMBER(10)
+ 
+
+Q5: Alter the employee table to add a new column emp_email of type VARCHAR(100).
+
+SQL> ALTER TABLE EMP59 ADD emp_email VARCHAR(100);
+Table altered.
+
+SQL> desc emp59;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID 				   NOT NULL VARCHAR2(10)
+ EMP_NAME					    VARCHAR2(15)
+ EMP_SALARY					    NUMBER(12,2)
+ EMP_JOIN_DATE					    DATE
+ DEPT_ID					    NUMBER(10)
+ EMP_EMAIL					    VARCHAR2(100)
+
+
+Q6: Drop the support table if it is no longer required.
+
+
+
+
+
+Q7: Modify the emp_salary column in the employee table to allow values up to DECIMAL(12, 2).
+
+SQL> ALTER TABLE emp59 MODIFY emp_salary DECIMAL(12,2);
+Table altered.
+
+SQL> desc emp59;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID 				   NOT NULL VARCHAR2(10)
+ EMP_NAME					    VARCHAR2(15)
+ EMP_SALARY					    NUMBER(12,2)
+ EMP_JOIN_DATE					    DATE
+ DEPT_ID					    NUMBER(10)
+ EMP_EMAIL					    VARCHAR2(100)
+
+
+Q8: Add five suitable records to department table (Let value of dept_id starts with 101).
+
+INSERT INTO department59 VALUES(101,'MCA','North Block');
+INSERT INTO department59 VALUES(102,'BCA','South Block');
+INSERT INTO department59 VALUES(103,'BBA','East Block');
+INSERT INTO department59 VALUES(104,'MBA','West Block');
+INSERT INTO department59 VALUES(105,'Btech CS','Main Block');
+
+
+   DEPT_ID DEPT_NAME	   DEPT_LOCATION
+---------- --------------- --------------------------------------------------
+       101 MCA		   North Block
+       102 BCA		   South Block
+       103 BBA		   East Block
+       104 MBA		   West Block
+       105 Btech CS	   Main Block
+
+Q9: Insert the following employee record into the employee table: emp_id = 1, emp_name= 'John Doe', emp_salary = 60000, emp_join_date'15-05-2021', dept_id= 101.
+
+SQL> INSERT INTO emp59 VALUES(1,'John Doe',60000,TO_DATE('2021-06-03','YYYY-MM-DD'),101,'johndoe@gmail.com');
+1 row created.
+
+
+
+
+
+
+
+
+
+
+
+
+
