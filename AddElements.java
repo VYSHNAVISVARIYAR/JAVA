@@ -38,6 +38,14 @@ class AddElements {
     System.out.println("ArrayList: " + countries);
     int size = countries.size();
     System.out.println("The leng of the array is :"+ size);
+    System.out.println();
+
+    System.out.println("7.To iterate over elements");
+    for(int i=0;i<countries.size();i++)
+    {
+    	System.out.print(countries.get(i));
+    	System.out.print(" ");
+    }
     
   }
 }
