@@ -1,7 +1,3 @@
-import java.util.*;
-
-class AddElements {
-  public static void main(String[] args){
     ArrayList<String> countries = new ArrayList<>();
 
     System.out.println("1.Adding elements to an arrayList");
@@ -39,13 +35,21 @@ class AddElements {
     int size = countries.size();
     System.out.println("The leng of the array is :"+ size);
     System.out.println();
-
+    
     System.out.println("7.To iterate over elements");
     for(int i=0;i<countries.size();i++)
     {
     	System.out.print(countries.get(i));
-    	System.out.print(" ");
+    	System.out.println(" ");
     }
     
-  }
-}
+    System.out.println("8.To sort an array list");
+    countries.sort(null);
+    System.out.println(countries);
+
+    System.out.println("9.To remove an array list");
+    countries.remove(0);
+    System.out.println("The new array list is:"+countries);    
+    
+    
+    
