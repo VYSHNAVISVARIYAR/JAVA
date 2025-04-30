@@ -1,0 +1,106 @@
+Step 1: Create the Package
+As before, create a directory structure for the package named Graphics.
+
+Step 2: Define the Interface
+Create a file named Shape.java in the Graphics package:
+
+
+package Graphics;
+
+public interface Shape {
+    double area();
+}
+
+Step 3: Implement Classes
+Create the following classes in the Graphics package without using the @Override annotation:
+
+-----Rectangle.java-------
+java
+Run
+Copy code
+package Graphics;
+
+public class Rectangle implements Shape {
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public double area() {
+        return length * width; // Area = length * width
+    }
+}
+-----Triangle.java-----
+
+package Graphics;
+
+public class Triangle implements Shape {
+    private double base;
+    private double height;
+
+    public Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    public double area() {
+        return 0.5 * base * height; // Area = 1/2 * base * height
+    }
+}
+----Square.java----
+package Graphics;
+
+public class Square implements Shape {
+    private double side;
+
+    public Square(double side) {
+        this.side = side;
+    }
+
+    public double area() {
+        return side * side; // Area = side²
+    }
+}
+
+----Circle.java----
+package Graphics;
+
+public class Circle implements Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double area() {
+        return Math.PI * radius * radius; // Area = πr²
+    }
+}
+Step 4: Test the Package
+Create a main class to test the package. This class can be placed in the same project but outside the Graphics package.
+
+----Main.java-----
+
+import Graphics.Circle;
+import Graphics.Rectangle;
+import Graphics.Square;
+import Graphics.Triangle;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of each shape
+        Rectangle rectangle = new Rectangle(5, 10);
+        Triangle triangle = new Triangle(6, 8);
+        Square square = new Square(4);
+        Circle circle = new Circle(3);
+
+        // Calculate and display the area of each shape
+        System.out.println("Area of Rectangle: " + rectangle.area());
+        System.out.println("Area of Triangle: " + triangle.area());
+        System.out.println("Area of Square: " + square.area());
+        System.out.println("Area of Circle: " + circle.area());
+    }
+}
