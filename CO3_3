@@ -1,0 +1,98 @@
+import java.util.Scanner;
+
+// Interface with prototypes for area and perimeter
+interface Shape {
+    double area();
+    double perimeter();
+}
+
+// Class Circle that implements the Shape interface
+class Circle implements Shape {
+    private double radius;
+
+    // Constructor to initialize radius
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // Method to calculate area of the circle
+    public double area() {
+        return Math.PI * radius * radius; // Area = πr²
+    }
+
+    // Method to calculate perimeter (circumference) of the circle
+    public double perimeter() {
+        return 2 * Math.PI * radius; // Perimeter = 2πr
+    }
+}
+
+// Class Rectangle that implements the Shape interface
+class Rectangle implements Shape {
+    private double length;
+    private double width;
+
+    // Constructor to initialize length and width
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    // Method to calculate area of the rectangle
+    public double area() {
+        return length * width; // Area = length * width
+    }
+
+    // Method to calculate perimeter of the rectangle
+    public double perimeter() {
+        return 2 * (length + width); // Perimeter = 2(length + width)
+    }
+}
+
+// Main class to run the program
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("Menu:");
+            System.out.println("1. Calculate area and perimeter of Circle");
+            System.out.println("2. Calculate area and perimeter of Rectangle");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the radius of the circle: ");
+                    double radius = scanner.nextDouble();
+                    Circle circle = new Circle(radius);
+                    System.out.println("Area of Circle: " + circle.area());
+                    System.out.println("Perimeter of Circle: " + circle.perimeter());
+                    break;
+
+                case 2:
+                    System.out.print("Enter the length of the rectangle: ");
+                    double length = scanner.nextDouble();
+                    System.out.print("Enter the width of the rectangle: ");
+                    double width = scanner.nextDouble();
+                    Rectangle rectangle = new Rectangle(length, width);
+                    System.out.println("Area of Rectangle: " + rectangle.area());
+                    System.out.println("Perimeter of Rectangle: " + rectangle.perimeter());
+                    break;
+
+                case 3:
+                    System.out.println("Exiting the program.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+            }
+
+            System.out.println(); // Print a blank line for better readability
+        } while (choice != 3);
+
+        // Close the scanner
+        scanner.close();
+    }
+}
